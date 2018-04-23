@@ -56,6 +56,7 @@ RUN yum -y install firewalld \
     boost-python-devel \
     maven \
     python-devel \
+    python36-devel \
     swig \
     tk-devel \
     which \

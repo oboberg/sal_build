@@ -5,4 +5,5 @@ docker run -d --privileged --name "$1" \
            -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
            -p 80:80 \
            -v ${PWD}:/home/opsim/dds_libs \
-           sal:latest
+           salmaker
+           

@@ -2,7 +2,9 @@
 
 set -e
 
-# Build the image
+DEFAULT_TAG="salmaker"
+
+# Build the release image
 
 printf "Building base image with tag: %s\n" $DEFAULT_TAG
-docker build  --tag="sal:latest" docker/sal
+docker build  --tag="$DEFAULT_TAG" --no-cache docker/sal
