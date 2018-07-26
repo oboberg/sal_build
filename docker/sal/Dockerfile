@@ -63,6 +63,14 @@ RUN yum -y install firewalld \
     yum clean all && \
     systemctl enable firewalld.service
 
+RUN yum -y update
+RUN yum -y install yum-utils
+RUN yum -y groupinstall development
+RUN yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+RUN yum -y install python36u
+RUN yum -y install python36u-devel
+
+
 EXPOSE 80
 
 RUN mkdir dds repos && \
