@@ -18,7 +18,7 @@ EOD
 }
 
 # get the options
-while getopts h:o:s:x: c; do
+while getopts ho:s:x: c; do
     case $c in
             h) usage ; exit 0 ;;
             o) TS_OPENPLICE="$OPTARG" ;;
