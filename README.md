@@ -4,7 +4,7 @@
 
 If you have cloned this directory and it is your `PWD` the following
 commands with generate the `scheduler` SAL topics based on the `master`
-branches of `ts_xml`, `ts_sal`, and `ts_opensplice`,
+branches of `ts_xml`, `ts_sal`, and `ts_opensplice`.
 
 ### Build the docker image:
 The docker image produced will be called `salmaker`
@@ -21,6 +21,10 @@ mount point in the container is `/home/opsim/sal_libs`
 ~~~~
 docker run -it --rm -v ${PWD}/sal_libs:/home/opsim/sal_libs salmaker build_topics.sh
 ~~~~
+
+After running this command you will see the generated libraries in your local
+`sal_libs` directory.
+
 
 ### Changing branches.
 
