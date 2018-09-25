@@ -1,4 +1,4 @@
-FROM centos/systemd
+FROM centos:7
 
 MAINTAINER "Owen Boberg" <boberg37@gmail.com>
 
@@ -60,8 +60,7 @@ RUN yum -y install firewalld \
     swig \
     tk-devel \
     which \
-    yum clean all && \
-    systemctl enable firewalld.service
+    yum clean all
 
 RUN yum -y update
 RUN yum -y install yum-utils
@@ -69,9 +68,6 @@ RUN yum -y groupinstall development
 RUN yum -y install https://centos7.iuscommunity.org/ius-release.rpm
 RUN yum -y install python36u
 RUN yum -y install python36u-devel
-
-
-EXPOSE 80
 
 RUN mkdir dds repos && \
     cd repos && \
@@ -83,4 +79,7 @@ ADD ./setup.env /home/opsim/dds/setup.env
 
 RUN mkdir /home/opsim/sal_libs
 
-CMD ["/usr/sbin/init"]
+ADD --chown=opsim:opsim ./build_topics.sh /home/opsim/build_topics.sh
+RUN chmod +x /home/opsim/build_topics.sh
+
+ENTRYPOINT ["/usr/bin/bash", "--"]
