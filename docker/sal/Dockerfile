@@ -79,4 +79,7 @@ ADD ./setup.env /home/opsim/dds/setup.env
 
 RUN mkdir /home/opsim/sal_libs
 
-CMD ["/usr/bin/bash"]
+ADD --chown=opsim:opsim ./build_topics.sh /home/opsim/build_topics.sh
+RUN chmod +x /home/opsim/build_topics.sh
+
+ENTRYPOINT ["/usr/bin/bash", "--"]
