@@ -69,6 +69,24 @@ RUN yum -y install https://centos7.iuscommunity.org/ius-release.rpm
 RUN yum -y install python36u
 RUN yum -y install python36u-devel
 
+RUN yum -y install epel-release \
+    emacs
+
+RUN yum -y install centos-release-scl
+RUN yum-config-manager --enable rhel-server-rhscl-7-rpms
+RUN yum -y install devtoolset-6
+
+USER opsim
+WORKDIR /home/opsim
+
+RUN source scl_source enable devtoolset-6; \
+    mkdir stack && \
+    cd stack && \
+    curl -OL https://raw.githubusercontent.com/lsst/lsst/master/scripts/newinstall.sh && \
+  	bash newinstall.sh -b -c -3
+
+WORKDIR /home/opsim
+
 RUN mkdir dds repos && \
     cd repos && \
     git clone https://github.com/lsst-ts/ts_opensplice.git && \
