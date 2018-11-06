@@ -50,6 +50,10 @@ cd /home/opsim/
 
 /home/opsim/sal_libs=$DIRECTORY
 
+
+
+
+
 if [ ! -d "$DIRECTORY" ]; then
   mkdir /home/opsim/sal_libs
 fi
@@ -70,14 +74,16 @@ git checkout $TS_SAL
 
 cd /home/opsim
 
-cp /home/opsim/repos/ts_xml/sal_interfaces/scheduler/*.xml /home/opsim/repos/ts_sal/test/.
+cp /home/opsim/repos/ts_xml/sal_interfaces/Scheduler/*.xml /home/opsim/repos/ts_sal/test/.
+cp /home/opsim/repos/ts_xml/sal_interfaces/*.xml  /home/opsim/repos/ts_sal/test/.
+
 
 cd /home/opsim/repos/ts_sal/test/
-salgenerator scheduler validate
-salgenerator scheduler sal cpp
-salgenerator scheduler sal python
+salgenerator Scheduler validate
+salgenerator Scheduler sal cpp
+salgenerator Scheduler sal python
 
 cd /home/opsim
 
-cp /home/opsim/repos/ts_sal/test/scheduler/cpp/src/SALPY_scheduler.so /home/opsim/sal_libs/.
-cp /home/opsim/repos/ts_sal/test/scheduler/cpp/libsacpp_scheduler_types.so /home/opsim/sal_libs/.
+cp /home/opsim/repos/ts_sal/test/Scheduler/cpp/src/SALPY_scheduler.so /home/opsim/sal_libs/.
+cp /home/opsim/repos/ts_sal/test/Scheduler/cpp/libsacpp_scheduler_types.so /home/opsim/sal_libs/.
